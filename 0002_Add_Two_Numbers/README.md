@@ -1,0 +1,1 @@
+This question is quit straightforward. We need to add the digits stored in two linked lists from head to tail, carrying any overflow into the next node.
