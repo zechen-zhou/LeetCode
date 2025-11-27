@@ -33,11 +33,11 @@ c  a  b  b
 
 | Key     | Value |
 |---------|-----|
-| a  | 0  |
-| b  | 1  |
+| a  | 1  |
 | b  | 2  |
+| b  | 3  |
 
-From the table above, `Start` points to $a$ and `End` points to $b$. The longest substring without repeating characters is `ab`, the length is `End - Start = 2-0 = 2`.
+From the table above, `Start` points to $a$ and `End` points to $b$. The longest substring without repeating characters is `ab`, the length is `End - Start = 3-1 = 2`.
 
 3. The third iteration
 
@@ -49,10 +49,10 @@ c  a  b  b
 
 | Key     | Value |
 |---------|-----|
-| b  | 0  |
-| b  | 1  |
+| b  | 2  |
+| b  | 3  |
 
-From the table above, `Start` points to the first $b$ and `End` points to the second $b$. The longest substring without repeating characters is `b`, the length is `End - Start = 1-0 = 1`.
+From the table above, `Start` points to the first $b$ and `End` points to the second $b$. The longest substring without repeating characters is `b`, the length is `End - Start = 3-2 = 1`.
 
 4. The fourth iteration
 
@@ -64,6 +64,6 @@ c  a  b  b
 
 | Key     | Value |
 |---------|-----|
-| b  | 0  |
+| b  | 3  |
 
 From the table above, both `Start` and `End` point to $b$. The longest substring without repeating characters is `b`, the length is 1 (special case).
