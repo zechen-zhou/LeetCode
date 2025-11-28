@@ -4,12 +4,12 @@ This question is asking for the **length** of the longest substring **without du
 
 We might need a variable to keep track of the longest length. To check duplicates, a key-value mapping is an efficient way. For example, using a hash table (**Insertion and Search will be $O(1)$ time**). Last but not least, we need to think about how to compute the length of substring in each iteration.
 
-Example: `cabb`
+## Example: `cabb`
 
 1. The first iteration:
 
 ```
-c  a  b  b
+c  a  b  b  d
 ^        ^
 Start    End
 ```
@@ -20,13 +20,14 @@ Start    End
 | a  | 1  |
 | b  | 2  |
 | b  | 3  |
+| d  | 4  |
 
 From the table above, `Start` points to $c$ and `End` points to $b$. The longest substring without repeating characters is `cab`, the length is `End - Start = 3-0 = 3`.
 
 2. The second iteration
 
 ```
-c  a  b  b
+c  a  b  b  d
    ^     ^
  Start   End
 ```
@@ -36,13 +37,14 @@ c  a  b  b
 | a  | 1  |
 | b  | 2  |
 | b  | 3  |
+| d  | 4  |
 
 From the table above, `Start` points to $a$ and `End` points to $b$. The longest substring without repeating characters is `ab`, the length is `End - Start = 3-1 = 2`.
 
 3. The third iteration
 
 ```
-c  a  b  b
+c  a  b  b  d
       ^  ^
    Start End
 ```
@@ -51,19 +53,21 @@ c  a  b  b
 |---------|-----|
 | b  | 2  |
 | b  | 3  |
+| d  | 4  |
 
 From the table above, `Start` points to the first $b$ and `End` points to the second $b$. The longest substring without repeating characters is `b`, the length is `End - Start = 3-2 = 1`.
 
 4. The fourth iteration
 
 ```
-c  a  b  b
-         ^
-        Start (End)
+c  a  b  b  d
+         ^  ^
+      Start End
 ```
 
 | Key     | Value |
 |---------|-----|
 | b  | 3  |
+| d  | 4  |
 
-From the table above, both `Start` and `End` point to $b$. The longest substring without repeating characters is `b`, the length is 1 (special case).
+From the table above, `Start` points to $b$ and `End` points to $d$. The longest substring without repeating characters is `bd`, the length is `End - Start + 1 = 4-3+1 = 2` (no duplicates found during this iteration).
