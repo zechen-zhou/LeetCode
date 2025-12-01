@@ -113,22 +113,34 @@ Define the following:
 * $S = ``cabb"$
 * $len[i] =$ length of the longest substring without repeating characters ending at index i
 * $last[S[i]] =$ the index where character S[i] appeared last time ($last[]$ could be implemented as a hash table, the key is the character and the value is the corresponding index appeared last time)
-* $maxlen[i] =$ the maximum length so far
+* $maxlen[i] =$ the longest (maximum) length we have found from index `0` to `i`
+* $start =$ the start index of current no-repeating substring
 
 Recurrence:
 
 $$
+start =
+\begin{cases}
+0, & \text{initial value} \\
+last[S[i]] + 1, & \text{if } last[S[i]] \ge start \\
+start, & \text{otherwise}
+\end{cases}
+$$
+
+$$
 len[i] =
 \begin{cases}
+0, & \text{if the string is empty} \\
 1, & \text{if } i = 0 \\
 1 + len[i-1], & \text{if } i \ge 1 \text{ and } S[i] \text { hasn't appeared in current substring} \\
-i-last[S[i]], & \text{otherwise}
+i-start+1, & \text{otherwise}
 \end{cases}
 $$
 
 $$
 maxlen[i] =
 \begin{cases}
+0, & \text{if the string is empty} \\
 len[0], & \text{if } i = 0 \\
 \max(maxlen[i-1], len[i]), & \text{if } i \ge 1
 \end{cases}
